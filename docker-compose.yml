@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  twenty-front:
+    image: pdkhai/twenty-front
+    ports:
+      - "3001:3001"
+    depends_on:
+      - postgres
+  twenty-server:
+    image: pdkhai/twenty-server
+    ports:
+      - "3002:3000"
+    depends_on:
+      - postgres
+  postgres:
+    image: pdkhai/twenty-postgres
+    # build: ./postgres
+    volumes:
+    - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: twenty
+    # ports:
+    #   - "5432:5432"
+volumes:
+  db_data:
