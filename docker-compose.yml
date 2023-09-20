@@ -14,7 +14,7 @@ services:
       - "3002:3000"
     depends_on:
       - postgres
-  postgres:
+  twenty-postgres:
     image: postgres:15.2-alpine
     restart: always
     command: postgres -c 'max_connections=1000'
